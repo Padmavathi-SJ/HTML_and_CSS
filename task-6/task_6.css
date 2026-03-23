@@ -32,6 +32,8 @@ padding: 10px 20px;
 
 .content {
     display: none;
+    padding: 10px;
+    border-radius: 5px;
     opacity: 0;
     transform: translateY(10px);
     transition: all 0.3s ease;
@@ -46,3 +48,6 @@ padding: 10px 20px;
     transform: translateY(0);
 }
 
+.content1 {background-color: lightcoral;}
+.content2 {background-color: lightskyblue;}
+.content3 {background-color: lightseagreen;}
