@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": 50000,
+    "category": "electronics",
+    "image": "../../assets/laptop.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Shoes",
+    "price": 2000,
+    "category": "fashion",
+    "image": "../../assets/shoe.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Phone",
+    "price": 20000,
+    "category": "electronics",
+    "image": "../../assets/phone.jpg"
+  }
+]
