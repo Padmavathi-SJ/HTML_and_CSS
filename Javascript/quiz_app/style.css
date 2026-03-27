@@ -1,0 +1,33 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.quiz-container {
+    width: 320px;
+    margin: auto;
+}
+
+.option {
+    display: block;
+    margin: 8px;
+    padding: 10px;
+    border: 1px solid #333;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.option:hover {
+    background-color: #ddd;
+}
+
+.selected {
+    background-color: lightblue;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
