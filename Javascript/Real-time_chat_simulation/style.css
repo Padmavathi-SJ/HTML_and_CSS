@@ -1,0 +1,42 @@
+body {
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.chat-container {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.chat-window {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.sent {
+    background: lightblue;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.received {
+    background: #eee;
+}
+
+.time {
+    font-size: 10px;
+    color: gray;
+}
