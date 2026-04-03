@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+ <div class="sidebar">
+
+    <h2>Real time Chat Application with Websockets</h2>
+    
+    <input id="username" placeholder="Username">
+    <input id="room" placeholder="Room">
+    <button onclick="join()">Join</button>
+
+    <button onclick="loadHistory()">Load History</button>
+   
+    <div class="status" id="status">Offline</div>
+    </div>
+
+    <!-- Chat Section -->
+    <div id="chat-section">
+
+        <div class="chat-header">
+            <h3 id="roomName">Room</h3>
+        </div>
+
+        <div id="chat" class="chat-box"></div>
+
+        <div id="typing" class="typing"></div>
+
+        <!-- Message Input -->
+        <div class="input-area">
+            <input id="msg" placeholder="Type a message..." oninput="typing()">
+            <button onclick="send()">Send</button>
+        </div>
+
+<!-- DM Section -->
+    <div class="dm-section">
+        <input id="to" placeholder="Send to user">
+        <input id="dm_msg" placeholder="Private message">
+        <button onclick="sendDM()">Send DM</button>
+    </div>
+
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
