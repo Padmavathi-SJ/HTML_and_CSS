@@ -1,8 +1,8 @@
 import sqlite3
 from datetime import datetime
 
-conn = sqlite3.connect("chat.db") 
-cursor = conn.cursor() #
+conn = sqlite3.connect("chat.db") # create connection to SQLite database file
+cursor = conn.cursor() # creates cursor -  the hand that executes SQL commands
 
 def create_table():
     cursor.execute("""

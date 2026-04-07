@@ -1,7 +1,7 @@
-let ws;
-let username;
-let room;
-let typingTimeout;
+let ws;  // websocket connection object
+let username; // current user's name
+let room; // current chat room
+let typingTimeout; // time for hding typing indicator
 
 function join() {
     username = document.getElementById("username").value;
@@ -9,7 +9,7 @@ function join() {
 
     document.getElementById("roomName").innerText = room;
 
-    ws = new WebSocket("ws://localhost:8765");
+    ws = new WebSocket("ws://localhost:8765"); // set global connection
 
     ws.onopen = () => {
         document.getElementById("status").innerText = "Oneline";
@@ -25,30 +25,35 @@ function join() {
         let data = JSON.parse(event.data);
         let chat = document.getElementById("chat");
 
+        // public msg display
         if(data.type === "message") {
             let div = document.createElement("div");
             div.classList.add("message");
 
             if(data.user === username) {
-                div.classList.add("sent");
+                div.classList.add("sent"); // My message  (right aligned)
             } else {
-                div.classList.add("received");
+                div.classList.add("received"); // Other's message (left-aligned)
             }
 
             div.innerHTML = `<b>${data.user}</b><br>${data.text}`;
             chat.appendChild(div);
         }
 
-
+        //Server broadcasts: {"type": "typing", "user":"Bob"}
         if(data.type === "typing") {
             document.getElementById("typing").innerText = 
-            `${data.user} is typing...`;
+            `${data.user} is typing...`; // show "user is typing..."
 
-            clearTimeout(typingTimeout);
+            clearTimeout(typingTimeout); // clear any existing timer
             typingTimeout = setTimeout(() => {
                 document.getElementById("typing").innerText = "";
-            }, 2000);
+            }, 2000); // set new timer to hide after 2 seconds
         }
+// if user types another key within 2 seconds
+// Timer resets
+// "user is typing..." stays visible.
+// Only disappears 2 seconds after last keystroke
 
         if(data.type === "dm") {
             let div = document.createElement("div");
@@ -64,29 +69,37 @@ function join() {
 function send() {
     let msg = document.getElementById("msg").value;
 
-    if (!msg) return;
+    if (!msg) return;  // Don't send empty message
 
-    ws.send(JSON.stringify({
+    ws.send(JSON.stringify({ // use same connection from join()
         type: "message",
         "text": msg,
         room: room
     }));
 
-    document.getElementById("msg").value = "";
+    document.getElementById("msg").value = "";  // Clear input
 }
 
+// without lastTypingTime: sends on every keystroke (could be 100+ messages)
+// Better: Throttle to send max 1 per second.
+let lastTypingTime = 0;
+
 function typing() {
+    let now = Date.now();
+    if (now - lastTypingTime > 1000) { // 1 second throttle
     ws.send(JSON.stringify({
         type: "typing",
         room: room
     }));
+    lastTypingTime = now;
+}
 }
 
 function sendDM() {
     let to = document.getElementById("to").value;
     let msg = document.getElementById("dm_msg").value;
     
-    if(!to || !msg) return;
+    if(!to || !msg) return; // Both fields required
 
     ws.send(JSON.stringify({
         type: "dm",
@@ -94,7 +107,7 @@ function sendDM() {
         text: msg
     }));
 
-    document.getElementById("dm_msg").value = "";
+    document.getElementById("dm_msg").value = ""; // Clear only DM input
 
 }
 
@@ -102,6 +115,8 @@ function sendDM() {
 function loadHistory() {
     ws.send(JSON.stringify({
         type: "history",
-        room: room
+        room: room,
+        page: page,
+        limit: 50
     }));
 }
