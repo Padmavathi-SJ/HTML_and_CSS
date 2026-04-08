@@ -1,5 +1,6 @@
 import json # for serializing tasks to JSON
 import uuid # for generating unique task IDs
+import time
 from config import redis_client, QUEUE_NAME
 
 def enqueue(func_name, **kwargs):
@@ -19,7 +20,8 @@ def enqueue(func_name, **kwargs):
         "func": func_name, # function name
         "args": kwargs, # arguments
         "retries": 0, # initial retry count
-        "status": "PENDING" # initial status
+        "status": "PENDING", # initial status
+        "start_time": time.time() # track start time
     }
     # rpush = right push (adds to end of list)
     # Queue is FIFO (first in,first out)

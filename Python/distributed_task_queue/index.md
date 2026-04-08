@@ -109,7 +109,7 @@ process_task(task)
 
 
 ### FIFO Queue(first-in-first-out)
-# Order of operations:
+--> Order of operations:
 redis_client.rpush("queue", "first")   # Queue: ["first"]
 redis_client.rpush("queue", "second")  # Queue: ["first", "second"]
 redis_client.rpush("queue", "third")   # Queue: ["first", "second", "third"]

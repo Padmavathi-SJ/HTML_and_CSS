@@ -22,3 +22,7 @@ def send_email(to, template):
     
     # successs on 3rd attempt
     return "email_sent"
+
+def process_payment(order_id, amount):
+    # simulate failure every time
+    raise Exception("PaymentGatewayError")

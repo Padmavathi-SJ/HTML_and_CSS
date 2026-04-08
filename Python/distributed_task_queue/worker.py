@@ -1,8 +1,8 @@
 import json # for parsing tasks
 import time # for delays and timing
-import uuid # for worker ID
 from config import redis_client, QUEUE_NAME, DEAD_QUEUE, RESULT_KEY
 import tasks # import task functions to execute
+import random 
 
 MAX_RETRIES = 3 # Maximum number of retry attempts
 
@@ -23,10 +23,11 @@ def process_task(task):
     # Map function names to display names
     func_display = {
         "generate_thumbnail": "thumb",
-        "send_email": "email"
+        "send_email": "email",
+        "process_payment": "pay"
     }.get(func_name, func_name[:5])
 
-    start = time.time()  # record start time
+    start = task.get("start_time", time.time())  # keep original start
 
     try:
         # Execute the function with unpacked arguments
@@ -37,29 +38,47 @@ def process_task(task):
         print(f"[WORKER-{task.get('worker_id', '?')}] Task {task['id'][:6]} completed in {duration}s - result: {result}")
     
         # store success result in Redis hash
-        redis_client.hset(RESULT_KEY, task["id"], json.dumps({
+        redis_client.hset(
+            RESULT_KEY, 
+            task["id"], 
+            json.dumps({
             "status": "SUCCESS",
             "result": result,
             "retries": task["retries"],
             "duration": duration,
             "func": func_display
-
-        }))
+        })
+)
 
     except Exception as e:
         task["retries"] += 1 # Increment retry counter
         error_msg = str(e).replace("Exception: ", "")
 
         if task["retries"] > MAX_RETRIES:
+            duration = round(time.time() - start, 2)
+
             print(f"[WORKER-{task.get('worker_id', '?')}] Task {task['id'][:6]} DEAD_LETTER - retries exhausted")
 
             # Move to dead letter queue (permanent failure)
-            redis_client.rpush(DEAD_QUEUE, json.dumps(task))
+            redis_client.hset(
+                RESULT_KEY, 
+                task["id"], 
+                json.dumps({
+                "status": "DEAD_LETTER",
+                "result": None,
+                "retries": task["retries"],
+                "duration": duration,
+                "func": func_display
+            })
+)
+
 
         else:
             delay = exponential_backoff(task["retries"]) # calculate wait time
 
-            print(f"[WORKER-{task.get('worker_id', '?')}] Task {task['id'][:6]} FAILED ({error_msg}) -retry {task['retries']}/{MAX_RETRIES} in {delay}s")
+            elapsed = round(time.time() - start, 2)
+
+            print(f"[WORKER-{task.get('worker_id', '?')}] Task {task['id'][:6]} FAILED ({error_msg}) -retry {task['retries']}/{MAX_RETRIES} in {delay}s (elapsed {elapsed}s)")
 
             time.sleep(delay) # wait before retrying
 
@@ -88,7 +107,8 @@ def worker_loop(worker_id):
             # Display task pickup message
             func_display = {
                 "generate_thumbnail": "generate_thumbnail",
-                "send_email": "send_email"
+                "send_email": "send_email",
+                "process_payment": "process_payment"
             }.get(task["func"], task["func"])
 
             print(f"[WORKER-{worker_id}] Picked up task {task['id'][:6]} ({func_display})")
@@ -98,4 +118,4 @@ def worker_loop(worker_id):
 
         
         else:
-            time.sleep(1) # wait if queue empty, before polling again.
+            time.sleep(random.uniform(0.5, 1.5)) # wait if queue empty, before polling again. and this distributes load better across workers
