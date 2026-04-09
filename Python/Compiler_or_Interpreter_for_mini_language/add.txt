@@ -1,0 +1,153 @@
+# =========================
+# SIMPLE MINI LANGUAGE
+# =========================
+
+# -------------------------
+# TOKEN TYPES
+# -------------------------
+
+PLUS = "+"
+ASSIGN = "="
+MINUS = "-"
+LET = "<="
+LPAREN = "("
+RPAREN = ")"
+LBRACE = "{"
+RBRASE = "}"
+COMMA = ","
+
+# -------------------------
+# LEXER (TOKENIZER)
+# -------------------------
+def tokenize(code):
+    tokens = []
+
+    words = code.replace("(", " ( ").replace(")", " ) ").split()
+
+    for word in words:
+        if word == "let":
+            tokens.append((LET, word))
+
+        elif word == "print":
+            tokens.append((PRINT, word))
+
+        elif word.isdigit():
+            tokens.append((INT, int(word)))
+
+        elif word == "+":
+            tokens.append((PLUS, word))
+
+        elif word == "=":
+            tokens.append((ASSIGN, word))
+
+        else:
+            tokens.append((IDENT, word))
+
+    return tokens
+
+
+# -----------------------
+# AST NODES
+# -----------------------
+class LetNode:
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
+
+
+class PrintNode:
+    def __init__(self, expr):
+        self.expr = expr
+
+
+class BinOpNode:
+    def __init__(self, left, right):
+        self.left = left
+        self.right = right
+
+
+class NumberNode:
+    def __init__(self, value):
+        self.value = value
+
+
+class VarNode:
+    def __init__(self, name):
+        self.name = name
+
+
+# ---------------------------
+# PARSER (FIXED)
+# ---------------------------
+def parse(tokens):
+    ast = []
+    i = 0
+
+    while i < len(tokens):
+        token_type, token_value = tokens[i]
+
+        # let x = 5
+        if token_type == LET:
+            name = tokens[i+1][1]
+            value = tokens[i+3][1]
+
+            ast.append(LetNode(name, NumberNode(value)))
+            i += 4
+
+        # print x + 2
+        elif token_type == PRINT:
+            left = tokens[i+1][1]
+            right = tokens[i+3][1]
+
+            expr = BinOpNode(VarNode(left), NumberNode(right))
+            ast.append(PrintNode(expr))
+
+            i += 4
+
+        else:
+            i += 1
+
+    return ast
+
+
+# ----------------------
+# INTERPRETER (FIXED)
+# ----------------------
+def interpreter(ast):
+    env = {}
+
+    for node in ast:
+
+        # let x = 5
+        if isinstance(node, LetNode):
+            env[node.name] = node.value.value
+
+        # print x + 2
+        elif isinstance(node, PrintNode):
+            left_val = env[node.expr.left.name]
+            right_val = node.expr.right.value
+
+            result = left_val + right_val
+            print(result)
+
+
+# =======================
+# MAIN EXECUTION
+# =======================
+code = """
+let x = 5
+print x + 2
+"""
+
+# STEP 1: TOKENIZE
+tokens = tokenize(code)
+print("=== TOKENS ===")
+print(tokens)
+
+# STEP 2: PARSE
+ast = parse(tokens)
+print("\n=== AST BUILT ===")
+
+# STEP 3: INTERPRET
+print("\n=== OUTPUT ===")
+interpreter(ast)
