@@ -3,56 +3,167 @@
 <head>
     <title>Real-Time Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        canvas {
+            max-width: 100%;
+            margin: 20px 0;
+        }
+        .status-box {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 18px;
+        }
+        .NORMAL { background: #d4edda; color: #155724; }
+        .WARNING { background: #fff3cd; color: #856404; }
+        .CRITICAL { background: #f8d7da; color: #721c24; }
+        .alert-log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .alert-item {
+            padding: 5px;
+            margin: 5px 0;
+            border-left: 3px solid;
+            font-size: 14px;
+        }
+        .alert-critical { border-left-color: red; background: #fee; }
+        .alert-warning { border-left-color: orange; background: #fff3cd; }
+        h2, h3 { margin: 10px 0; }
+    </style>
 </head>
 <body>
-
-<h2>Sensor Dashboard</h2>
-
-
-<canvas id="chart" width="600" height="300"></canvas>
-
-<h3 id="status">Status: </h3>
+<div class="container">
+    <h2>Real-Time Sensor Dashboard</h2>
+    
+    <canvas id="tempChart" width="600" height="300"></canvas>
+    
+    <div id="statusBox" class="status-box NORMAL">
+        <strong>Status:</strong> Waiting for data...
+    </div>
+    
+    <div id="details" style="text-align: center; margin: 10px 0;">
+        Temperature: --°F | Moving Avg: --°F | Z-Score: --
+    </div>
+    
+    <div class="alert-log">
+        <h3>Alert Log</h3>
+        <div id="alerts"></div>
+    </div>
+</div>
 
 <script>
-    // connect websocket
+    // WebSocket connection
     let ws = new WebSocket("ws://localhost:8000/ws");
-
-    let temps = [];   // store temperatures
-    let labels = [];  // store timestamps
-
-    // create chart
-    let chart = new Chart(document.getElementById("chart"), {
-        type: "line",
+    
+    // create arrays to store Chart data
+    let temperatures = []; // store temp values for chart
+    let labels = [];  // store timestamps for x-axis
+    
+    // Create chart
+    let ctx = document.getElementById('tempChart').getContext('2d');
+    let chart = new Chart(ctx, {
+        type: 'line', //Line chart type
         data: {
-            labels: labels,  
+            labels: labels,  // X-aixs: timestamps
             datasets: [{
-                label: "Temperature",
-                data: temps
+                label: 'Temperature (°F)',
+                data: temperatures,  // Y-axis: temperatre values
+                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                tension: 0.1  // Slight curve smoothing
             }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    title: { display: true, text: 'Temperature (°F)' },
+                    min: 60, 
+                    max: 120
+                }
+            }
         }
     });
-
-    // receive data from backend
-    ws.onmessage = (event) => {
-
-        let data = JSON.parse(event.data);
-
-        let time = new Date().toLocaleTimeString();
-
-        labels.push(time);  // add time
-        temps.push(data.temperature);  // add temp
-
-        // keep only last 20 points
-        if (temps.length > 20) {
-            temps.shift();
-            labels.shift();
+    
+    // function to add alerts to the log
+    function addAlert(message, type) {
+        let alertsDiv = document.getElementById('alerts');
+        let alertDiv = document.createElement('div');
+        alertDiv.className = `alert-item alert-${type}`;
+        alertDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong> - ${message}`;
+        alertsDiv.insertBefore(alertDiv, alertsDiv.firstChild);
+        
+        // Keep only last 10 alerts (prevents infinite scrolling)
+        while (alertsDiv.children.length > 10) {
+            alertsDiv.removeChild(alertsDiv.lastChild);
         }
-
-        chart.update();  // refresh chart
-
-        // update status text
-        document.getElementById("status").innerText =
-            "Status: " + data.status + " | Avg: " + data.avg + " | Z: " + data.z;
+    }
+    
+    // Handle incoming data from server
+    ws.onmessage = function(event) {
+        let data = JSON.parse(event.data); // Parse JSON string to object
+        let now = new Date().toLocaleTimeString(); // current time for label
+        
+        // Update chart
+        labels.push(now);
+        temperatures.push(data.temperature);
+        
+        // Keep only last 20 points (prevents chart getting too crowded)
+        if (temperatures.length > 20) {
+            temperatures.shift(); // Remove oldest temperature
+            labels.shift(); // Remove oldest timtestamp
+        }
+        
+        chart.update();  // refresh the chart
+        
+        // Update status box with color based on alert level
+        let statusBox = document.getElementById('statusBox');
+        statusBox.className = `status-box ${data.status}`;
+        statusBox.innerHTML = `<strong>Status:</strong> ${data.status}`;
+        
+        // Update details
+        document.getElementById('details').innerHTML = `
+            Temperature: ${data.temperature}°F | 
+            Moving Avg: ${data.avg}°F | 
+            Z-Score: ${data.z}
+        `;
+        
+        // Add alert for critical/warning
+        if (data.status === 'CRITICAL') {
+            addAlert(`CRITICAL: Temperature ${data.temperature}°F exceeded 100°F threshold!`, 'critical');
+        } else if (data.status === 'WARNING') {
+            addAlert(`WARNING: Temperature ${data.temperature}°F exceeded 85°F threshold`, 'warning');
+        }
+    };
+    
+    ws.onopen = function() {
+        console.log('Connected to server');
+        addAlert('Connected to sensor stream', 'normal');
+    };
+    
+    ws.onclose = function() {
+        console.log('Disconnected');
+        addAlert('Disconnected from server', 'critical');
     };
 </script>
 

@@ -1,37 +1,53 @@
-import pandas as pd  # for calculations
+from collections import deque
 
-window_data = []  # store last N values (sliding window)
+# store last 10 readings (simulates 5 minutes if each reading is 30 seconds)
+# For 1-second intervals, 10 readings = 10 seconds
+# Change to 300 for 5 minutes (300 seconds)
+window_size = 10
+window_data = deque(maxlen=window_size)  # Automatically drops oldest when full
 
 def process(data):
-    window_data.append(data)  # add new data
+    """
+    Process sensor data with sliding window calculations.
+    
+    Args:
+        data: Dictionary with 'temperature', 'vibration', 'sensor'
+    
+    Returns:
+        Dictionary with moving average, z-score, and status
+    """
+    # Add current reading to window
+    window_data.append(data["temperature"])  # Store copy to prevent mutation
 
-    # keep only last 10 values (moving window)
-    if len(window_data) > 10:
-        window_data.pop(0)  # remove oldest (FIXED: was pop(10))
+    # calculate moving average
+    avg_temp = sum(window_data) / len(window_data)
 
-    df = pd.DataFrame(window_data)  # convert list → dataframe
-
-    avg_temp = df["temperature"].mean()  # moving average
-    std_temp = df["temperature"].std()  # standard deviation
-
-    current = data["temperature"]  # latest value
-
-    # avoid division by zero
-    if std_temp == 0:
-        z_score = 0
+    # calculate moving average
+    if len(window_data) > 1:
+        variance = sum((x - avg_temp) ** 2 for x in window_data) / len(window_data)
+        std_temp = variance ** 0.5   # square root for standard deviation
     else:
-        z_score = (current - avg_temp) / std_temp  # anomaly score
+        std_temp = 0
 
-    # status logic
+    # calculate z-score
+    current = data["temperature"]
+    if std_temp > 0:
+        z_score = (current - avg_temp) / std_temp
+    else:
+        z_score = 0
+    
+
+    # determine status based on temperature
     if current > 100:
         status = "CRITICAL"
     elif current > 85:
         status = "WARNING"
     else:
         status = "NORMAL"
-
+    
     return {
-        "avg": round(avg_temp, 2),  # moving average
-        "z": round(z_score, 2),    # anomaly score
-        "status": status           # system status
+        "avg": round(avg_temp, 2),
+        "std": round(std_temp, 2),
+        "z": round(z_score, 2),
+        "status": status
     }
