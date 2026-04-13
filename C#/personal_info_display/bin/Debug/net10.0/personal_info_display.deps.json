@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "personal_info_display/1.0.0": {
+        "runtime": {
+          "personal_info_display.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "personal_info_display/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

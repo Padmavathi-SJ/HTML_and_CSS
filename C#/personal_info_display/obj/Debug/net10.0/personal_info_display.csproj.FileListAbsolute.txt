@@ -1,0 +1,15 @@
+E:\Presidio-Tasks\C#\personal_info_display\bin\Debug\net10.0\personal_info_display.exe
+E:\Presidio-Tasks\C#\personal_info_display\bin\Debug\net10.0\personal_info_display.deps.json
+E:\Presidio-Tasks\C#\personal_info_display\bin\Debug\net10.0\personal_info_display.runtimeconfig.json
+E:\Presidio-Tasks\C#\personal_info_display\bin\Debug\net10.0\personal_info_display.dll
+E:\Presidio-Tasks\C#\personal_info_display\bin\Debug\net10.0\personal_info_display.pdb
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\personal_info_display.GeneratedMSBuildEditorConfig.editorconfig
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\personal_info_display.AssemblyInfoInputs.cache
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\personal_info_display.AssemblyInfo.cs
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\personal_info_display.csproj.CoreCompileInputs.cache
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\personal_info_display.sourcelink.json
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\personal_info_display.dll
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\refint\personal_info_display.dll
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\personal_info_display.pdb
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\personal_info_display.genruntimeconfig.cache
+E:\Presidio-Tasks\C#\personal_info_display\obj\Debug\net10.0\ref\personal_info_display.dll

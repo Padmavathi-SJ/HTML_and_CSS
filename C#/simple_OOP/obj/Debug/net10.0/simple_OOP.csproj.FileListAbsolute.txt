@@ -1,0 +1,15 @@
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\simple_OOP.GeneratedMSBuildEditorConfig.editorconfig
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\simple_OOP.AssemblyInfoInputs.cache
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\simple_OOP.AssemblyInfo.cs
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\simple_OOP.csproj.CoreCompileInputs.cache
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\simple_OOP.sourcelink.json
+E:\Presidio-Tasks\C#\simple_OOP\bin\Debug\net10.0\simple_OOP.exe
+E:\Presidio-Tasks\C#\simple_OOP\bin\Debug\net10.0\simple_OOP.deps.json
+E:\Presidio-Tasks\C#\simple_OOP\bin\Debug\net10.0\simple_OOP.runtimeconfig.json
+E:\Presidio-Tasks\C#\simple_OOP\bin\Debug\net10.0\simple_OOP.dll
+E:\Presidio-Tasks\C#\simple_OOP\bin\Debug\net10.0\simple_OOP.pdb
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\simple_OOP.dll
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\refint\simple_OOP.dll
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\simple_OOP.pdb
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\simple_OOP.genruntimeconfig.cache
+E:\Presidio-Tasks\C#\simple_OOP\obj\Debug\net10.0\ref\simple_OOP.dll
