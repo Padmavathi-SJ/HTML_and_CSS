@@ -1,0 +1,6 @@
+Hello world! this is sample text file.
+C# programming is very fun and powerful too.
+Its very easy to learn and work with files in C#.
+Exception Handling makes our programs robust.
+Practice makes perfect! keep learning and, 
+Do something great every day!

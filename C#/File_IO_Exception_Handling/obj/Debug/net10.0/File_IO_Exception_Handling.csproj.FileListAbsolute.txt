@@ -1,0 +1,15 @@
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\bin\Debug\net10.0\File_IO_Exception_Handling.exe
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\bin\Debug\net10.0\File_IO_Exception_Handling.deps.json
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\bin\Debug\net10.0\File_IO_Exception_Handling.runtimeconfig.json
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\bin\Debug\net10.0\File_IO_Exception_Handling.dll
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\bin\Debug\net10.0\File_IO_Exception_Handling.pdb
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\File_IO_Exception_Handling.GeneratedMSBuildEditorConfig.editorconfig
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\File_IO_Exception_Handling.AssemblyInfoInputs.cache
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\File_IO_Exception_Handling.AssemblyInfo.cs
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\File_IO_Exception_Handling.csproj.CoreCompileInputs.cache
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\File_IO_Exception_Handling.sourcelink.json
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\File_IO_Exception_Handling.dll
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\refint\File_IO_Exception_Handling.dll
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\File_IO_Exception_Handling.pdb
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\File_IO_Exception_Handling.genruntimeconfig.cache
+E:\Presidio-Tasks\C#\File_IO_Exception_Handling\obj\Debug\net10.0\ref\File_IO_Exception_Handling.dll
