@@ -1,0 +1,15 @@
+E:\Presidio-Tasks\C#\collections_string_manipulation\bin\Debug\net10.0\collections_string_manipulation.exe
+E:\Presidio-Tasks\C#\collections_string_manipulation\bin\Debug\net10.0\collections_string_manipulation.deps.json
+E:\Presidio-Tasks\C#\collections_string_manipulation\bin\Debug\net10.0\collections_string_manipulation.runtimeconfig.json
+E:\Presidio-Tasks\C#\collections_string_manipulation\bin\Debug\net10.0\collections_string_manipulation.dll
+E:\Presidio-Tasks\C#\collections_string_manipulation\bin\Debug\net10.0\collections_string_manipulation.pdb
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\collections_string_manipulation.GeneratedMSBuildEditorConfig.editorconfig
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\collections_string_manipulation.AssemblyInfoInputs.cache
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\collections_string_manipulation.AssemblyInfo.cs
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\collections_string_manipulation.csproj.CoreCompileInputs.cache
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\collections_string_manipulation.sourcelink.json
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\collections_string_manipulation.dll
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\refint\collections_string_manipulation.dll
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\collections_string_manipulation.pdb
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\collections_string_manipulation.genruntimeconfig.cache
+E:\Presidio-Tasks\C#\collections_string_manipulation\obj\Debug\net10.0\ref\collections_string_manipulation.dll
