@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Presidio-Tasks\\C#\\event_handling\\event_handling.csproj": {}
+    "E:\\Presidio-Tasks\\C#\\async_programming_and_multi_threading\\async_programming_and_multi_threading.csproj": {}
   },
   "projects": {
-    "E:\\Presidio-Tasks\\C#\\event_handling\\event_handling.csproj": {
+    "E:\\Presidio-Tasks\\C#\\async_programming_and_multi_threading\\async_programming_and_multi_threading.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Presidio-Tasks\\C#\\event_handling\\event_handling.csproj",
-        "projectName": "event_handling",
-        "projectPath": "E:\\Presidio-Tasks\\C#\\event_handling\\event_handling.csproj",
+        "projectUniqueName": "E:\\Presidio-Tasks\\C#\\async_programming_and_multi_threading\\async_programming_and_multi_threading.csproj",
+        "projectName": "async_programming_and_multi_threading",
+        "projectPath": "E:\\Presidio-Tasks\\C#\\async_programming_and_multi_threading\\async_programming_and_multi_threading.csproj",
         "packagesPath": "C:\\Users\\padma\\.nuget\\packages\\",
-        "outputPath": "E:\\Presidio-Tasks\\C#\\event_handling\\obj\\",
+        "outputPath": "E:\\Presidio-Tasks\\C#\\async_programming_and_multi_threading\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\padma\\AppData\\Roaming\\NuGet\\NuGet.Config"

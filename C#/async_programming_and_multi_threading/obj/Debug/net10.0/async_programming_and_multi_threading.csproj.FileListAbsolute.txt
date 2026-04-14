@@ -1,0 +1,15 @@
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\bin\Debug\net10.0\async_programming_and_multi_threading.exe
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\bin\Debug\net10.0\async_programming_and_multi_threading.deps.json
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\bin\Debug\net10.0\async_programming_and_multi_threading.runtimeconfig.json
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\bin\Debug\net10.0\async_programming_and_multi_threading.dll
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\bin\Debug\net10.0\async_programming_and_multi_threading.pdb
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\async_programming_and_multi_threading.GeneratedMSBuildEditorConfig.editorconfig
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\async_programming_and_multi_threading.AssemblyInfoInputs.cache
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\async_programming_and_multi_threading.AssemblyInfo.cs
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\async_programming_and_multi_threading.csproj.CoreCompileInputs.cache
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\async_programming_and_multi_threading.sourcelink.json
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\async_programming_and_multi_threading.dll
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\refint\async_programming_and_multi_threading.dll
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\async_programming_and_multi_threading.pdb
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\async_programming_and_multi_threading.genruntimeconfig.cache
+E:\Presidio-Tasks\C#\async_programming_and_multi_threading\obj\Debug\net10.0\ref\async_programming_and_multi_threading.dll
