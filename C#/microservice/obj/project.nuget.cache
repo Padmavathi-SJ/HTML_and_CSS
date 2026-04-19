@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "pwBKfYmf4+Q=",
+  "success": true,
+  "projectFilePath": "E:\\Presidio-Tasks\\C#\\microservice\\microservice.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\padma\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.0\\microsoft.entityframeworkcore.9.0.0.nupkg.sha512",
+    "C:\\Users\\padma\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.0\\microsoft.entityframeworkcore.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\padma\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.0\\microsoft.entityframeworkcore.analyzers.9.0.0.nupkg.sha512",
+    "C:\\Users\\padma\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\9.0.0\\microsoft.entityframeworkcore.inmemory.9.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
