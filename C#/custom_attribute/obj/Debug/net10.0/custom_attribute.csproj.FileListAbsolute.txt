@@ -1,0 +1,15 @@
+E:\Presidio-Tasks\C#\custom_attribute\bin\Debug\net10.0\custom_attribute.exe
+E:\Presidio-Tasks\C#\custom_attribute\bin\Debug\net10.0\custom_attribute.deps.json
+E:\Presidio-Tasks\C#\custom_attribute\bin\Debug\net10.0\custom_attribute.runtimeconfig.json
+E:\Presidio-Tasks\C#\custom_attribute\bin\Debug\net10.0\custom_attribute.dll
+E:\Presidio-Tasks\C#\custom_attribute\bin\Debug\net10.0\custom_attribute.pdb
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\custom_attribute.GeneratedMSBuildEditorConfig.editorconfig
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\custom_attribute.AssemblyInfoInputs.cache
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\custom_attribute.AssemblyInfo.cs
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\custom_attribute.csproj.CoreCompileInputs.cache
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\custom_attribute.sourcelink.json
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\custom_attribute.dll
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\refint\custom_attribute.dll
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\custom_attribute.pdb
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\custom_attribute.genruntimeconfig.cache
+E:\Presidio-Tasks\C#\custom_attribute\obj\Debug\net10.0\ref\custom_attribute.dll
